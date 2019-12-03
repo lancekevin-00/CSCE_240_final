@@ -1,0 +1,26 @@
+#ifndef WORLD_H
+#define WORLD_H
+#include <cstdlib>
+
+using namespace std; 
+
+template <class T>
+class World
+{
+	
+	public: 
+		World() {};
+		
+		virtual void PrintGrid() = 0;
+		virtual void UpdateGrid() = 0;
+		
+	protected:
+		int day; 
+		T grid[10][10];
+		
+		virtual void initGrid() = 0;
+		virtual bool checkBounds(int,int) = 0;
+	
+};
+
+#endif /* WORLD_H */
