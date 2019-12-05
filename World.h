@@ -4,7 +4,6 @@
 
 using namespace std; 
 
-template <class T>
 class World
 {
 	
@@ -16,7 +15,7 @@ class World
 		
 	protected:
 		int day; 
-		T grid[10][10];
+		char grid[10][10];
 		
 		virtual void initGrid() = 0;
 		virtual bool checkBounds(int,int) = 0;
@@ -24,3 +23,4 @@ class World
 };
 
 #endif /* WORLD_H */
+
