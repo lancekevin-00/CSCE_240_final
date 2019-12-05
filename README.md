@@ -2,8 +2,8 @@
 
 ### Rules:
 1. rule 1
-2.
-3.
+2. If the randomly generated move for any (whatever we have) is illegal (out of bounds) then no move is made. 
+3. 
 4.
 5.
 6.
