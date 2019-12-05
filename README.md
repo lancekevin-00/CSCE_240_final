@@ -1,6 +1,6 @@
 # CSCE_240_final
 
-###Rules:
+### Rules:
 1. rule 1
 2.
 3.
