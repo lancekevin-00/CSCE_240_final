@@ -8,9 +8,9 @@ Starting Condition: The simulation will start with the grid full of soil objects
 4. Each day there is a [% chance] of a tornado being spawned
 5. A tornado can destroy up to 5 crops
 6. When a corn object is 200 days old it is harvested and its space becomes free
-7.
-8.
-9.
+7. If fertility in a tile goes below 0 or equals 0 with a corn object in it the corn crop is killed and removed from the tile.
+8. The fertility value of a soil object with a corn object will be increased by a random amount each day 
+9. If the randomly generated move for any planting is illegal (out of bounds) then no move is made.
 10.
 
-Stopping Conditon: 50 crops are harvested, 1000 days have passed, or all the corn has died
+Stopping Conditon: 50 crops are harvested or 1000 days have passed, or all the corn has died
