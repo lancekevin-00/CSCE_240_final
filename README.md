@@ -13,4 +13,4 @@ Starting Condition: The simulation will start with the grid full of soil objects
 9.
 10.
 
-Stopping Conditon: 50 crops are harvested or 1000 days have passed
+Stopping Conditon: 50 crops are harvested, 1000 days have passed, or all the corn has died
