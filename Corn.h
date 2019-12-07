@@ -8,6 +8,7 @@ public:
   Corn();
 
   int getAge();
+  void update();
 
 private:
   const int MAX_AGE = 200;
