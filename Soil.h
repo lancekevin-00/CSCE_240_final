@@ -7,10 +7,13 @@ using namespace std;
 class Soil{
 public:
   Soil();
+  Soil(Corn);
+  void Harvest();
+  void update();
 
 private:
   Corn corn;
-
+	int fertility;
   int getFertility();
 
   const int MAX_FERTILITY = 100;
