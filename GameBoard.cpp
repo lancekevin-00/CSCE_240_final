@@ -1,5 +1,6 @@
 
 #include "GameBoard.h" 
+#include "Soil.h"
 #include <iostream>
 
 GameBoard::GameBoard() : World(){
@@ -22,12 +23,18 @@ GameBoard::GameBoard() : World(){
 	 void GameBoard::initGrid(){
 		for(int i =0; i < 10; i++) {
 			for(int j =0; j < 10;j++) {
-				grid[i][j] = '*';
+        Soil *soil = new Soil();
+        soilGrid[i][j] = soil;
+				grid[i][j] = 'S';
 			}
 		}
 	}
 
 	bool GameBoard::checkBounds(int x, int y){ 
-		return false;
+		//Checks to see if passed in values are within bounds assuming that is what the funciton takes in
+    if(x < 0 || x > 10 || y < 0 || y >10) {
+      return false;
+    }
+    return true;
 	}
 

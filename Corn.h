@@ -7,8 +7,10 @@ class Corn{
 public:
   Corn();
 
-  int getAge();
+  int getAge() const;
   void update();
+  //void move(); //maybe goes here, just a placeholder for now
+  Corn& operator=(const Corn);
 
 private:
   const int MAX_AGE = 200;

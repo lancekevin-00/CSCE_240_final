@@ -1,5 +1,6 @@
 #ifndef SOIL_H
 #define SOIL_H
+#include "Corn.h"
 #include <cstdlib>
 
 using namespace std;
@@ -7,18 +8,20 @@ using namespace std;
 class Soil{
 public:
   Soil();
-  Soil(Corn);
+  Soil(Corn*);
+  ~Soil();
   void Harvest();
   void update();
-
+	Soil& operator=(const Soil);
+	Corn* planted() const;
 private:
-  Corn corn;
+  Corn *corn;
 	int fertility;
-  int getFertility();
-
-  const int MAX_FERTILITY = 100;
-  const int FERTILITY_DECREASE = 1;
-  const int FERTILITY_INCREASE = 1;
+  int getFertility() const;
+	int harvested;
+  static const int MAX_FERTILITY = 100;
+  static const int FERTILITY_DECREASE = 1;
+  static const int FERTILITY_INCREASE = 1;
 };
 
 #endif

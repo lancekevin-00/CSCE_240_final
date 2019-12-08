@@ -1,26 +1,27 @@
 #include "Soil.h"
+#include "Corn.h"
 #include <iostream>
 
 Soil::Soil() {
 	fertility = MAX_FERTILITY;
 	corn = NULL;
 }
-Soil::Soil(Corn c) {
-	corn = c;
+Soil::Soil(Corn *c) {
+	corn = c; //Probably need to switch to a copy constructor or something, my brain is shot rn tbh so i dont feel like doing it rn
 	fertility = MAX_FERTILITY;
 }
 void Soil::Harvest() {
-	//calls to a method somewhere that updates harvested amount, probably in gameboard or something
+	harvested++;
 	corn = NULL;
 }
 void Soil::update() {
 	if(fertility > 0) {
-		if(corn.getAge() < 200 ) {
-			if(corn.getAge() > 60 && corn != NULL;{
+		if(corn->getAge() < 200 ) {
+			if(corn->getAge() > 60 && corn != NULL){
 				fertility = fertility - FERTILITY_DECREASE;
 			}
 			else if(corn == NULL) {
-				if(fertitilty <100) {
+				if(fertility <100) {
 					fertility = fertility + FERTILITY_INCREASE;
 				}
 			}
@@ -28,7 +29,7 @@ void Soil::update() {
 		else {
 			//If it still alive harvest
 			if(fertility > 0) {
-				this.Harvest();
+				this->Harvest();
 			}
 		}
 	}
@@ -39,6 +40,14 @@ void Soil::update() {
 	}
 		
 }
-int Soil::getFertility() {
+int Soil::getFertility() const {
 	return fertility;
+}
+Corn* Soil::planted() const {
+	return corn;
+}
+Soil& Soil::operator=(const Soil rhs) {
+	fertility = rhs.getFertility();
+	corn = rhs.planted();
+	return *this;
 }
