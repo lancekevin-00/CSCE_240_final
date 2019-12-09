@@ -46,6 +46,9 @@ int Soil::getFertility() const {
 Corn* Soil::planted() const {
 	return corn;
 }
+int Soil::getHarvested() {
+	return harvested;
+}
 Soil& Soil::operator=(const Soil rhs) {
 	fertility = rhs.getFertility();
 	corn = rhs.planted();

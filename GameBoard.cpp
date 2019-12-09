@@ -6,6 +6,7 @@
 GameBoard::GameBoard() : World(){
 	this->initGrid();
 	day =0;
+  numHarvested = 0;
 }
 
 	void GameBoard::PrintGrid()  {
@@ -19,6 +20,7 @@ GameBoard::GameBoard() : World(){
 	}
 	 void GameBoard::UpdateGrid(){
 		 //Will call the values for the corn and soil
+     
 	}
 	 void GameBoard::initGrid(){
 		for(int i =0; i < 10; i++) {
@@ -29,7 +31,6 @@ GameBoard::GameBoard() : World(){
 			}
 		}
 	}
-
 	bool GameBoard::checkBounds(int x, int y){ 
 		//Checks to see if passed in values are within bounds assuming that is what the funciton takes in
     if(x < 0 || x > 10 || y < 0 || y >10) {
@@ -37,4 +38,12 @@ GameBoard::GameBoard() : World(){
     }
     return true;
 	}
+  int GameBoard::harvested() {
+    for(int i =0; i < 10; i++) {
+			for(int j =0; j < 10;j++) {
+        numHarvested =+ soilGrid[i][j]->getHarvested();
+      }
+    }
+    return numHarvested;
+  }
 

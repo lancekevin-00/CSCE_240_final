@@ -8,8 +8,10 @@ class GameBoard : public World {
 	public:
 	GameBoard();
 	void PrintGrid();
-	void UpdateGrid();	
+	void UpdateGrid();
+  int harvested();
 	protected:
+  int numHarvested;
   Soil *soilGrid[10][10];
 	void initGrid();
 	bool checkBounds(int x, int y);
