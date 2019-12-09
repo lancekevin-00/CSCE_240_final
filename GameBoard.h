@@ -11,6 +11,7 @@ class GameBoard : public World {
 	void UpdateGrid();
   int harvested();
 	protected:
+  int cornY;
   int numHarvested;
   Soil *soilGrid[10][10];
 	void initGrid();

@@ -4,6 +4,7 @@
 #include <iostream>
 
 GameBoard::GameBoard() : World(){
+  srand (time(NULL));
 	this->initGrid();
 	day =0;
   numHarvested = 0;
@@ -19,15 +20,28 @@ GameBoard::GameBoard() : World(){
 		}
 	}
 	 void GameBoard::UpdateGrid(){
-		 //Will call the values for the corn and soil
+    for(int i =0; i < 10; i++) {
+			for(int j =0; j < 10;j++) {
+        soilGrid[i][j]->update();
+      }
+    }
      
 	}
 	 void GameBoard::initGrid(){
 		for(int i =0; i < 10; i++) {
+      cornY = rand() % 10;
 			for(int j =0; j < 10;j++) {
-        Soil *soil = new Soil();
-        soilGrid[i][j] = soil;
-				grid[i][j] = 'S';
+        if(j ==cornY) {
+          Corn *corn = new Corn();
+          Soil *soil = new Soil(corn);
+          soilGrid[i][j] = soil;
+          grid[i][j] = 'C';
+        }
+        else {
+          Soil *soil = new Soil();
+          soilGrid[i][j] = soil;
+          grid[i][j] = 'S';
+        }
 			}
 		}
 	}

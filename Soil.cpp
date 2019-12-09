@@ -15,28 +15,31 @@ void Soil::Harvest() {
 	corn = NULL;
 }
 void Soil::update() {
-	if(fertility > 0) {
-		if(corn->getAge() < 200 ) {
-			if(corn->getAge() > 60 && corn != NULL){
-				fertility = fertility - FERTILITY_DECREASE;
-			}
-			else if(corn == NULL) {
-				if(fertility <100) {
-					fertility = fertility + FERTILITY_INCREASE;
-				}
+	if(corn == NULL) {
+		if(fertility <100) {
+				fertility = fertility + FERTILITY_INCREASE;
 			}
 		}
 		else {
-			//If it still alive harvest
 			if(fertility > 0) {
-				this->Harvest();
+				if(corn->getAge() < 200 ) {
+					if(corn->getAge() > 60 && corn != NULL){
+						fertility = fertility - FERTILITY_DECREASE;
+						corn->update();
+					}
+				}
+				else {
+					//If it still alive harvest
+					if(fertility > 0) {
+						this->Harvest();
+					}
+				}
 			}
-		}
-	}
-	else {
-		//Plant is dead/feritilty equals zero so increasing the fertility allows it to run through the other loop
-		corn = NULL;
-		fertility = fertility + FERTILITY_INCREASE;
+			else {
+				//Plant is dead/feritilty equals zero so increasing the fertility allows it to run through the other loop
+				corn = NULL;
+				fertility = fertility + FERTILITY_INCREASE;
+			}
 	}
 		
 }
@@ -54,3 +57,10 @@ Soil& Soil::operator=(const Soil rhs) {
 	corn = rhs.planted();
 	return *this;
 }
+
+
+/*	else if(corn == NULL) {
+				if(fertility <100) {
+					fertility = fertility + FERTILITY_INCREASE;
+				}
+			} */
