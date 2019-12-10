@@ -10,6 +10,7 @@ public:
   Soil();
   Soil(Corn*);
   ~Soil();
+  void addCorn();
   void Harvest();
   void update();
 	Soil& operator=(const Soil);
