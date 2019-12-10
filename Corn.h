@@ -9,7 +9,7 @@ public:
 
   int getAge() const;
   void update();
-  //void move(); //maybe goes here, just a placeholder for now
+  //void move(); //maybe goes here, just a placeholder for now till i figure it out 
   Corn& operator=(const Corn);
 
 private:

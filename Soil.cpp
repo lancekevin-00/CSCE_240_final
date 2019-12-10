@@ -19,7 +19,7 @@ void Soil::update() {
 		if(fertility <100) {
 				fertility = fertility + FERTILITY_INCREASE;
 			}
-		}
+		} //Something is wrong in here
 		else {
 			if(fertility > 0) {
 				if(corn->getAge() < 200 ) {

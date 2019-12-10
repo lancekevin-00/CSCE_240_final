@@ -23,6 +23,10 @@ GameBoard::GameBoard() : World(){
     for(int i =0; i < 10; i++) {
 			for(int j =0; j < 10;j++) {
         soilGrid[i][j]->update();
+        //Check to see if it can move then move it/add next plant 
+        if(soilGrid[i][j]->planted() != NULL) {
+          cout << "Fertility: " << soilGrid[i][j]->getFertility();
+        }
       }
     }
      

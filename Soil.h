@@ -15,10 +15,11 @@ public:
 	Soil& operator=(const Soil);
 	Corn* planted() const;
 	int getHarvested();
+	int getFertility() const;
 private:
   Corn *corn;
 	int fertility;
-  int getFertility() const;
+ 
 	int harvested;
   static const int MAX_FERTILITY = 100;
   static const int FERTILITY_DECREASE = 1;
