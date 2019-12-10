@@ -35,8 +35,9 @@ void GameBoard::initGrid(){
     for(int j = 0; j < 10; j++){
       //putting the corn objects in the correct configuration
       if((i >= cornX && i < cornX+5) && (j == cornY || j == cornY+1)){
-        Corn *corn = new Corn();
-        Soil *soil = new Soil(corn);
+        Soil *soil = new Soil();
+        soil->addCorn();
+        soilGrid[i][j] = soil;
         grid[i][j] = 'C';
       }
       //the regular soil
