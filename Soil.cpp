@@ -16,16 +16,18 @@ void Soil::Harvest() {
 }
 void Soil::update() {
 	if(corn == NULL) {
-		if(fertility <100) {
+
+		if(fertility < MAX_FERTILITY) {
 				fertility = fertility + FERTILITY_INCREASE;
+				
 			}
 		} //Something is wrong in here
-		else {
-			if(fertility > 0) {
-				if(corn->getAge() < 200 ) {
-					if(corn->getAge() > 60 && corn != NULL){
+		else if(fertility > 0) {
+				if(corn->getAge() < corn->getMaxAge()) {
+					if(corn->getAge() > corn->getFertilityAge() /*&& corn != NULL*/){
 						fertility = fertility - FERTILITY_DECREASE;
 						corn->update();
+						cout << corn->getAge() << endl;
 					}
 				}
 				else {
@@ -40,9 +42,7 @@ void Soil::update() {
 				corn = NULL;
 				fertility = fertility + FERTILITY_INCREASE;
 			}
-	}
-		
-}
+		}
 int Soil::getFertility() const {
 	return fertility;
 }
