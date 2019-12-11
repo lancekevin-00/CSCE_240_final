@@ -12,7 +12,7 @@ public:
   //void move(); //maybe goes here, just a placeholder for now till i figure it out 
   Corn& operator=(const Corn);
   int getMaxAge();
-  int getFertilityAge();
+  int getFertilityAge() const;
 
 private:
   const int MAX_AGE = 200;

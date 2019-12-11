@@ -22,6 +22,6 @@ int Corn::getMaxAge(){
 	return MAX_AGE;
 }
 
-int Corn::getFertilityAge(){
+int Corn::getFertilityAge() const{
 	return FERTILITY_AGE;
 }
