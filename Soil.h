@@ -17,6 +17,7 @@ public:
 	Corn* planted() const;
 	int getHarvested();
   void destroyCorn();
+  bool hasCorn();
 private:
   Corn *corn;
 	int fertility;

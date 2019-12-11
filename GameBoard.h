@@ -19,12 +19,19 @@ protected:
 	bool checkBounds(int x, int y);
 private:
 	void spawnTornado();
+	void matureCorn(int, int);
 
 	int crops_destroyed;
 	int *corn_locations;
+	const int tornado_spawn_num = 1;
+	const int tornado_num = 100;
 
 	int x;
 	int y;
+	int n;
+
+	Corn *currCorn;
+	Corn *tempCorn;
 };
 
 #endif /* GAMEBOARD_H */

@@ -21,9 +21,25 @@ void GameBoard::PrintGrid()  {
 }
 
 void GameBoard::UpdateGrid(){
+  x = rand() % tornado_num;
+  if (x == tornado_spawn_num){
+    spawnTornado();
+    cout << "the tornado has ended" << endl;
+  }
   for(int i =0; i < 10; i++) {
 		for(int j =0; j < 10;j++) {
       soilGrid[i][j]->update();
+    }
+  }
+  //determining if a new corn object should be spawned
+  for(int i = 0; i < 10; i++){
+    for(int j = 0; j < 10; j++){
+      currCorn = soilGrid[i][j]->planted();
+      if(currCorn != NULL){
+        if(currCorn->getAge() >= currCorn->getFertilityAge()){
+          matureCorn(i,j);
+        }
+      }
     }
   }
 }
@@ -78,6 +94,64 @@ void GameBoard::spawnTornado(){
       y = rand() % 10;
       if (soilGrid[x][y]->planted() != NULL){
         soilGrid[x][y]->destroyCorn();
+        grid[x][y] = 'S';
+        break;
+      }
+    }
+  }
+}
+
+void GameBoard::matureCorn(int x, int y){
+  //checking the space to the right
+  if(checkBounds(x, y+1)){
+    //if the space is planted
+    if(soilGrid[x][y+1]->hasCorn()){
+      tempCorn = soilGrid[x][y+1]->planted();
+      //check the age of the adjacent corn
+      if(tempCorn->getAge() >= tempCorn->getFertilityAge()){
+        if(checkBounds(x, y+2) && !soilGrid[x][y+2]->hasCorn()){
+          soilGrid[x][y+2]->addCorn();
+          grid[x][y+2]= 'C' ;
+        }
+      }
+    }
+  }
+  if(checkBounds(x, y-1)){
+    //if the space is planted
+    if(soilGrid[x][y-1]->hasCorn()){
+      tempCorn = soilGrid[x][y-1]->planted();
+      //check the age of the adjacent corn
+      if(tempCorn->getAge() >= tempCorn->getFertilityAge()){
+        if(checkBounds(x, y-2) && !soilGrid[x][y-2]->hasCorn()){
+          soilGrid[x][y-2]->addCorn();
+          grid[x][y-2]= 'C' ;
+        }
+      }
+    }
+  }
+  if(checkBounds(x+1, y)){
+    //if the space is planted
+    if(soilGrid[x+1][y]->hasCorn()){
+      tempCorn = soilGrid[x+1][y]->planted();
+      //check the age of the adjacent corn
+      if(tempCorn->getAge() >= tempCorn->getFertilityAge()){
+        if(checkBounds(x+2, y) && !soilGrid[x+2][y]->hasCorn()){
+          soilGrid[x+2][y]->addCorn();
+          grid[x+2][y]= 'C' ;
+        }
+      }
+    }
+  }
+  if(checkBounds(x-1, y)){
+    //if the space is planted
+    if(soilGrid[x-1][y]->hasCorn()){
+      tempCorn = soilGrid[x-1][y]->planted();
+      //check the age of the adjacent corn
+      if(tempCorn->getAge() >= tempCorn->getFertilityAge()){
+        if(checkBounds(x-2, y) && !soilGrid[x-2][y]->hasCorn()){
+          soilGrid[x-2][y]->addCorn();
+          grid[x-2][y]= 'C' ;
+        }
       }
     }
   }

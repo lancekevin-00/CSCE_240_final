@@ -19,46 +19,45 @@ void Soil::Harvest() {
 	harvested++;
 	corn = NULL;
 }
+
 void Soil::update() {
 	if(corn == NULL) {
 		if(fertility < MAX_FERTILITY) {
 				fertility = fertility + FERTILITY_INCREASE;
 		}
+		return;
+	}
+	if(fertility == 0){
+		//if the fertility is gone destroy the corn
+		corn = NULL;
+		fertility = fertility + FERTILITY_INCREASE;
 	}
 	else {
-		if(fertility > 0) {
-			if(corn->getAge() < corn->getMaxAge()) {
-				if(corn->getAge() > corn->getFertilityAge() && corn != NULL){
-					cout << 4 << endl;
-					fertility = fertility - FERTILITY_DECREASE;
-					corn->update();
-					cout << 5 << endl;
-				}
+		if(corn->getAge() < corn->getMaxAge()) {
+			if(corn->getAge() > corn->getFertilityAge()){
+				fertility = fertility + 1; //this is the FERTILITY_DECREASE offset of young plants
+			}
+			fertility = fertility - FERTILITY_DECREASE;
+			corn->update();
 			}
 			else {
-				//If it still alive harvest
-				if(fertility > 0) {
 					this->Harvest();
-				}
 			}
 		}
-		else {
-			//Plant is dead/feritilty equals zero so increasing the fertility allows it to run through the other loop
-			corn = NULL;
-			fertility = fertility + FERTILITY_INCREASE;
-		}
-	}
-	cout << 0 << endl;
 }
+
 int Soil::getFertility() const {
 	return fertility;
 }
+
 Corn* Soil::planted() const {
 	return corn;
 }
+
 int Soil::getHarvested() {
 	return harvested;
 }
+
 Soil& Soil::operator=(const Soil rhs) {
 	fertility = rhs.getFertility();
 	corn = rhs.planted();
@@ -67,4 +66,11 @@ Soil& Soil::operator=(const Soil rhs) {
 
 void Soil::destroyCorn(){
 	corn = NULL;
+}
+
+bool Soil::hasCorn(){
+	if(corn == NULL){
+		return false;
+	}
+	return true;
 }
