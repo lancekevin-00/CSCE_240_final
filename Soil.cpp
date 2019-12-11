@@ -41,11 +41,11 @@ void Soil::update() {
 				}
 			}
 		}
-	/*	else {
+		else {
 			//Plant is dead/feritilty equals zero so increasing the fertility allows it to run through the other loop
 			corn = NULL;
 			fertility = fertility + FERTILITY_INCREASE;
-		}*/
+		}
 	}
 }
 int Soil::getFertility() const {
