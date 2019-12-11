@@ -65,9 +65,6 @@ Soil& Soil::operator=(const Soil rhs) {
 	return *this;
 }
 
-
-/*	else if(corn == NULL) {
-				if(fertility <100) {
-					fertility = fertility + FERTILITY_INCREASE;
-				}
-			} */
+void Soil::destroyCorn(){
+	corn = NULL;
+}

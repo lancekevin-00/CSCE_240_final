@@ -66,3 +66,19 @@ int GameBoard::harvested() {
   }
   return numHarvested;
 }
+
+void GameBoard::spawnTornado(){
+  cout << "TORNADO SIRENS" << endl;
+  //finding the crops which are going to be destroyed
+  crops_destroyed = (rand() % 4) + 1;
+  corn_locations = new int[crops_destroyed];
+  for(int i = 0; i <= crops_destroyed; i++){
+    while(true){
+      x = rand() % 10;
+      y = rand() % 10;
+      if (soilGrid[x][y]->planted() != NULL){
+        soilGrid[x][y]->destroyCorn();
+      }
+    }
+  }
+}

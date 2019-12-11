@@ -17,6 +17,14 @@ protected:
   Soil *soilGrid[10][10];
 	void initGrid();
 	bool checkBounds(int x, int y);
+private:
+	void spawnTornado();
+
+	int crops_destroyed;
+	int *corn_locations;
+
+	int x;
+	int y;
 };
 
 #endif /* GAMEBOARD_H */

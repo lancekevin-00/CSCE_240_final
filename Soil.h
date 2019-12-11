@@ -16,6 +16,7 @@ public:
 	Soil& operator=(const Soil);
 	Corn* planted() const;
 	int getHarvested();
+  void destroyCorn();
 private:
   Corn *corn;
 	int fertility;
