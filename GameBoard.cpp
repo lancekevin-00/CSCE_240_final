@@ -29,6 +29,9 @@ void GameBoard::UpdateGrid(){
   for(int i =0; i < 10; i++) {
 		for(int j =0; j < 10;j++) {
       soilGrid[i][j]->update();
+     if(soilGrid[i][j]->planted() == NULL)
+         grid[i][j] = 'S';
+         //Add a check for when it dies
     }
   }
   //determining if a new corn object should be spawned

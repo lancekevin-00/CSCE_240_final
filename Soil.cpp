@@ -6,10 +6,10 @@ Soil::Soil() {
 	fertility = MAX_FERTILITY;
 	corn = NULL;
 }
-Soil::Soil(Corn *c) {
+/*Soil::Soil(Corn *c) {
 	corn = c; //Probably need to switch to a copy constructor or something, my brain is shot rn tbh so i dont feel like doing it rn
 	fertility = MAX_FERTILITY;
-}
+} */
 
 void Soil::addCorn(){
 	corn = new Corn();
