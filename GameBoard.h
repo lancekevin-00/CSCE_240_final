@@ -30,6 +30,7 @@ private:
 	int y;
 	int n;
 	int corn_num;
+  int amountofCorn;
 
 	Corn *currCorn;
 	Corn *tempCorn;

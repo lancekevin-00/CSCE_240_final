@@ -9,9 +9,9 @@ int main (int argc, char **argv) {
       sim->PrintGrid();
       cout << "This is day "<< day << "! Enter a y to continue"<< endl;
 			cout << harvest << " corn has been harvested" << endl;
-      //cin >> response;
-     // if(response != 'y')
-       // break;
+      cin >> response;
+      if(response != 'y')
+        break;
       sim->UpdateGrid();
       day++;
       harvest = sim->harvested();
