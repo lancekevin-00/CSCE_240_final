@@ -70,7 +70,7 @@ void GameBoard::initGrid(){
 
 bool GameBoard::checkBounds(int x, int y){
 	//Checks to see if passed in values are within bounds assuming that is what the funciton takes in
-  if(x < 0 || x > 10 || y < 0 || y >10) {
+  if(x < 0 || x > 9 || y < 0 || y > 9) {
     return false;
   }
   return true;
@@ -87,8 +87,17 @@ int GameBoard::harvested() {
 
 void GameBoard::spawnTornado(){
   cout << "TORNADO SIRENS" << endl;
+  corn_num = 0;
+  for(int i = 0; i < 10; i++){
+    for(int j = 0; j < 10; j++){
+      if(soilGrid[i][j]->hasCorn()){
+        corn_num ++;
+      }
+    }
+  }
   //finding the crops which are going to be destroyed
-  crops_destroyed = (rand() % 4) + 1;
+  cout << "destroying " << (int)(corn_num/10) << endl;
+  crops_destroyed = (rand() % (int)(corn_num/10)) + 1;
   corn_locations = new int[crops_destroyed];
   for(int i = 0; i <= crops_destroyed; i++){
     while(true){
@@ -112,7 +121,6 @@ void GameBoard::matureCorn(int x, int y){
       //check the age of the adjacent corn
       if(tempCorn->getAge() >= tempCorn->getFertilityAge()){
         if(checkBounds(x, y+2) && !soilGrid[x][y+2]->hasCorn()){
-          cout << x << ", " << y+2 << endl;
           soilGrid[x][y+2]->addCorn();
           grid[x][y+2]= 'C' ;
         }
@@ -126,7 +134,6 @@ void GameBoard::matureCorn(int x, int y){
       //check the age of the adjacent corn
       if(tempCorn->getAge() >= tempCorn->getFertilityAge()){
         if(checkBounds(x, y-2) && !soilGrid[x][y-2]->hasCorn()){
-          cout << x << ", " << y-2 << endl;
           soilGrid[x][y-2]->addCorn();
           grid[x][y-2]= 'C' ;
         }
@@ -140,7 +147,6 @@ void GameBoard::matureCorn(int x, int y){
       //check the age of the adjacent corn
       if(tempCorn->getAge() >= tempCorn->getFertilityAge()){
         if(checkBounds(x+2, y) && !soilGrid[x+2][y]->hasCorn()){
-          cout << x+2 << ", " << y << endl;
           soilGrid[x+2][y]->addCorn();
           grid[x+2][y]= 'C' ;
         }
@@ -154,7 +160,6 @@ void GameBoard::matureCorn(int x, int y){
       //check the age of the adjacent corn
       if(tempCorn->getAge() >= tempCorn->getFertilityAge()){
         if(checkBounds(x-2, y) && !soilGrid[x-2][y]->hasCorn()){
-          cout << x-2 << ", " << y << endl;
           soilGrid[x-2][y]->addCorn();
           grid[x-2][y]= 'C' ;
         }

@@ -28,7 +28,7 @@ private:
 
 	int x;
 	int y;
-	int n;
+	int corn_num;
 
 	Corn *currCorn;
 	Corn *tempCorn;
