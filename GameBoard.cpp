@@ -30,8 +30,7 @@ void GameBoard::UpdateGrid(){
 		for(int j =0; j < 10;j++) {
       soilGrid[i][j]->update();
      if(soilGrid[i][j]->planted() == NULL)
-         grid[i][j] = 'S';
-         //Add a check for when it dies
+         grid[i][j] = ' ';
     }
   }
   //determining if a new corn object should be spawned
@@ -63,7 +62,7 @@ void GameBoard::initGrid(){
       else {
         Soil *soil = new Soil();
         soilGrid[i][j] = soil;
-        grid[i][j] = 'S';
+        grid[i][j] = ' ';
       }
     }
   }
@@ -97,7 +96,7 @@ void GameBoard::spawnTornado(){
       y = rand() % 10;
       if (soilGrid[x][y]->planted() != NULL){
         soilGrid[x][y]->destroyCorn();
-        grid[x][y] = 'S';
+        grid[x][y] = ' ';
         break;
       }
     }
@@ -113,6 +112,7 @@ void GameBoard::matureCorn(int x, int y){
       //check the age of the adjacent corn
       if(tempCorn->getAge() >= tempCorn->getFertilityAge()){
         if(checkBounds(x, y+2) && !soilGrid[x][y+2]->hasCorn()){
+          cout << x << ", " << y+2 << endl;
           soilGrid[x][y+2]->addCorn();
           grid[x][y+2]= 'C' ;
         }
@@ -126,6 +126,7 @@ void GameBoard::matureCorn(int x, int y){
       //check the age of the adjacent corn
       if(tempCorn->getAge() >= tempCorn->getFertilityAge()){
         if(checkBounds(x, y-2) && !soilGrid[x][y-2]->hasCorn()){
+          cout << x << ", " << y-2 << endl;
           soilGrid[x][y-2]->addCorn();
           grid[x][y-2]= 'C' ;
         }
@@ -139,6 +140,7 @@ void GameBoard::matureCorn(int x, int y){
       //check the age of the adjacent corn
       if(tempCorn->getAge() >= tempCorn->getFertilityAge()){
         if(checkBounds(x+2, y) && !soilGrid[x+2][y]->hasCorn()){
+          cout << x+2 << ", " << y << endl;
           soilGrid[x+2][y]->addCorn();
           grid[x+2][y]= 'C' ;
         }
@@ -152,6 +154,7 @@ void GameBoard::matureCorn(int x, int y){
       //check the age of the adjacent corn
       if(tempCorn->getAge() >= tempCorn->getFertilityAge()){
         if(checkBounds(x-2, y) && !soilGrid[x-2][y]->hasCorn()){
+          cout << x-2 << ", " << y << endl;
           soilGrid[x-2][y]->addCorn();
           grid[x-2][y]= 'C' ;
         }
