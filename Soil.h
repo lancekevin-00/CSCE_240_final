@@ -19,6 +19,7 @@ public:
   void destroyCorn();
   int getFertility() const;
   bool hasCorn();
+  int getFertility() const;
 private:
   Corn *corn;
 	int fertility;

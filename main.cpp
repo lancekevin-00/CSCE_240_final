@@ -8,8 +8,9 @@ int main (int argc, char **argv) {
     while(day < 1000 && harvest < 50) {
       sim->PrintGrid();
       cout << "This is day "<< day << "! Enter a y to continue"<< endl;
+			cout << harvest << " corn has been harvested" << endl;
       cin >> response;
-      if(response != 'y') 
+      if(response != 'y')
         break;
       sim->UpdateGrid();
       day++;
