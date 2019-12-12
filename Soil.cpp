@@ -31,8 +31,8 @@ void Soil::update() {
 	}
 	else {
 		if(corn->getAge() < corn->getMaxAge()) {
-			if(corn->getAge() > corn->getFertilityAge()){
-				fertility = fertility + 1; //this is the FERTILITY_DECREASE offset of young plants
+			if(corn->getAge() < corn->getFertilityAge()){
+				fertility = fertility + rand() % (FERTILITY_DECREASE/4); //this is the FERTILITY_DECREASE offset of young plants
 			}
 			fertility = fertility - FERTILITY_DECREASE;
 			corn->update();
