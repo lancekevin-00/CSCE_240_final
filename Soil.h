@@ -23,7 +23,7 @@ private:
   Corn *corn;
 	int fertility;
 	int harvested;
-  static const int MAX_FERTILITY = 100;
+  static const int MAX_FERTILITY = 500;
   static const int FERTILITY_DECREASE = 1;
   static const int FERTILITY_INCREASE = 1;
 };
