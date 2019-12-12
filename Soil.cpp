@@ -6,10 +6,6 @@ Soil::Soil() {
 	fertility = MAX_FERTILITY;
 	corn = NULL;
 }
-/*Soil::Soil(Corn *c) {
-	corn = c; //Probably need to switch to a copy constructor or something, my brain is shot rn tbh so i dont feel like doing it rn
-	fertility = MAX_FERTILITY;
-} */
 
 void Soil::addCorn(){
 	corn = new Corn();
@@ -31,6 +27,7 @@ void Soil::update() {
 		//if the fertility is gone destroy the corn
 		corn = NULL;
 		fertility = fertility + FERTILITY_INCREASE;
+		cout << "killed a corn" << endl;
 	}
 	else {
 		if(corn->getAge() < corn->getMaxAge()) {
