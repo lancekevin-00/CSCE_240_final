@@ -12,7 +12,7 @@ void Soil::addCorn(){
 }
 
 void Soil::Harvest() {
-	harvested++;
+	harvested= harvested +1;
 	destroyCorn();
 }
 
@@ -38,7 +38,7 @@ void Soil::update() {
 			corn->update();
 			}
 		else {
-			this->Harvest();
+			Harvest();
 		}
 	}
 }

@@ -39,7 +39,6 @@ void GameBoard::UpdateGrid(){
 		for(int j =0; j < 10;j++) {
       soilGrid[i][j]->update();
      if(soilGrid[i][j]->planted() == NULL) {
-          
          grid[i][j] = ' ';
        }
     }
@@ -109,7 +108,7 @@ void GameBoard::spawnTornado(){
       }
     }
   }
-  cout << "the number of corns is " << endl;
+  cout << "the number of corns is " << corn_num << endl;
   if(corn_num == 1){
     grid[x][y] = ' ';
     soilGrid[x][y]->destroyCorn();
