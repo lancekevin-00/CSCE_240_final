@@ -38,7 +38,6 @@ void Soil::update() {
 			corn->update();
 			}
 		else {
-			cout << "harvesting corn" << endl;
 			this->Harvest();
 		}
 	}
