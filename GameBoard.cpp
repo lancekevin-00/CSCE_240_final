@@ -88,9 +88,10 @@ bool GameBoard::checkBounds(int x, int y){
 }
 
 int GameBoard::harvested() {
+  numHarvested = 0;
   for(int i =0; i < 10; i++) {
 		for(int j =0; j < 10;j++) {
-      numHarvested =+ soilGrid[i][j]->getHarvested();
+      numHarvested = numHarvested + soilGrid[i][j]->getHarvested();
     }
   }
   return numHarvested;
@@ -103,12 +104,24 @@ void GameBoard::spawnTornado(){
     for(int j = 0; j < 10; j++){
       if(soilGrid[i][j]->hasCorn()){
         corn_num ++;
+        x = j;
+        i = i;
       }
     }
   }
+  cout << "the number of corns is " << endl;
+  if(corn_num == 1){
+    grid[x][y] = ' ';
+    soilGrid[x][y]->destroyCorn();
+    return;
+  }
   //finding the crops which are going to be destroyed
-  cout << "destroying " << (int)(corn_num/10) << endl;
-  crops_destroyed = (rand() % (int)(corn_num/10)) + 1;
+  if(corn_num < 10){
+    crops_destroyed = rand() % corn_num;
+  }
+  else{
+    crops_destroyed = (rand() % (int)(corn_num/10)) + 1;
+  }
   corn_locations = new int[crops_destroyed];
   for(int i = 0; i <= crops_destroyed; i++){
     while(true){
