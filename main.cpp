@@ -15,10 +15,8 @@ int main (int argc, char **argv) {
       //cin >> response;
       //if(response != 'y')
        //break;
-			cout << "calling updte grid" << endl;
       sim->UpdateGrid();
 			remainingCorn = sim->getCornNum();
-			cout << "there is " << remainingCorn << " remaining" << endl;
 			if(remainingCorn == 0){
 				day = 1000;
 			}
