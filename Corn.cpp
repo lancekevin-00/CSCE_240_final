@@ -16,7 +16,6 @@ Corn& Corn::operator=(const Corn rhs) {
 
 void Corn::update() {
 	age++;
-	cout << "updated the corn" << endl;
 }
 
 int Corn::getMaxAge(){
