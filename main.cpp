@@ -29,7 +29,11 @@ for (int i = 0; i < 1000; i++){
     cout << "Congratulations you have harvested enough corn for the season!" << endl;
 		won++;
   }
-  else{
+  else if(day == 1000){
+    cout << "Uh oh you all of your corn has died! Better luck next season." << endl;
+		lost++;
+  }
+   else {
     cout << "Uh oh the seasons over and you didn't harvest enough corn in time! Game Over." << endl;
 		lost++;
   }
