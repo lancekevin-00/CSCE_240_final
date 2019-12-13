@@ -1,6 +1,9 @@
 #include <iostream>
 #include "GameBoard.h"
 int main (int argc, char **argv) {
+	int won = 0;
+	int lost = 0;
+for (int i = 0; i < 1000; i++){
 	int harvest = 0;
 	int remainingCorn = 0;
   int day = 0;
@@ -24,9 +27,14 @@ int main (int argc, char **argv) {
   }
   if(harvest > 50) {
     cout << "Congratulations you have harvested enough corn for the season!" << endl;
+		won++;
   }
-  if(harvest < 50 && day >= 999) {
+  else{
     cout << "Uh oh the seasons over and you didn't harvest enough corn in time! Game Over." << endl;
+		lost++;
   }
+}
+cout << "won: " << won << endl;
+cout << "lost: " << lost << endl;
 	return 0;
 }
