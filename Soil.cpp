@@ -22,9 +22,10 @@ void Soil::update() {
 		if(fertility < MAX_FERTILITY) {
 				fertility = fertility + FERTILITY_INCREASE;
 		}
+		cout << "there is no corn in this space" << endl;
 		return;
 	}
-	if(fertility == 0){
+	if(fertility <= 0){
 		//if the fertility is gone destroy the corn
 		destroyCorn();
 		fertility = fertility + FERTILITY_INCREASE;
@@ -43,6 +44,7 @@ void Soil::update() {
 			Harvest();
 		}
 	}
+	cout << "successfully updated the soil, Fertility = " << fertility << endl;
 }
 
 int Soil::getFertility() const {

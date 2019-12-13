@@ -28,19 +28,25 @@ void GameBoard::UpdateGrid(){
         amountofCorn++;
     }
   }
+  cout << "counted the corn" << endl;
   x = rand() % tornado_num;
+  cout << x << " " << tornado_spawn_num << endl;
   if (x <= tornado_spawn_num){
     spawnTornado();
     cout << "the tornado has ended" << endl;
   }
+  cout << "got across determining a tornado" << endl;
+  
   for(int i = 0; i < 10; i++) {
 		for(int j = 0; j < 10;j++) {
+      cout << "(" << i << ", " << j << ")" << endl;
       soilGrid[i][j]->update();
-     if(!soilGrid[i][j]->hasCorn()) {
+      if(!soilGrid[i][j]->hasCorn()) {
          grid[i][j] = ' ';
        }
     }
   }
+  cout << "got across updating the soil" << endl;
   //determining if a new corn object should be spawned
   for(int i = 0; i < 10; i++){
     for(int j = 0; j < 10; j++){
@@ -52,6 +58,7 @@ void GameBoard::UpdateGrid(){
       }
     }
   }
+  cout << "got across spawning new soil" << endl;
 }
 
 void GameBoard::initGrid(){

@@ -12,9 +12,10 @@ int main (int argc, char **argv) {
       harvest = sim->harvested();
       cout << "This is day "<< day << "! Enter a y to continue"<< endl;
 			cout << harvest << " corn has been harvested" << endl;
-      cin >> response;
-      if(response != 'y')
-       break;
+      //cin >> response;
+      //if(response != 'y')
+       //break;
+			cout << "calling updte grid" << endl;
       sim->UpdateGrid();
 			remainingCorn = sim->getCornNum();
 			cout << "there is " << remainingCorn << " remaining" << endl;
