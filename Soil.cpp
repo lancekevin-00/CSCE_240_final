@@ -5,6 +5,7 @@
 Soil::Soil() {
 	fertility = MAX_FERTILITY;
 	corn = NULL;
+	harvested = 0;
 }
 
 void Soil::addCorn(){
@@ -12,7 +13,7 @@ void Soil::addCorn(){
 }
 
 void Soil::Harvest() {
-	harvested= harvested +1;
+	harvested = harvested + 1;
 	destroyCorn();
 }
 
@@ -38,6 +39,7 @@ void Soil::update() {
 			corn->update();
 			}
 		else {
+			cout << "harvesting corn" << endl;
 			Harvest();
 		}
 	}

@@ -10,6 +10,7 @@ public:
 	void PrintGrid();
 	void UpdateGrid();
   int harvested();
+	int getCornNum();
 protected:
   int cornY; //the left column of the initial corn plot
 	int cornX; //the upper row of the inital corn plot

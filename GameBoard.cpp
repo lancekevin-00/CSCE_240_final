@@ -6,7 +6,7 @@
 GameBoard::GameBoard() : World(){
   srand (time(NULL));
 	this->initGrid();
-	day =0;
+	day = 0;
   numHarvested = 0;
 }
 
@@ -21,15 +21,13 @@ void GameBoard::PrintGrid()  {
 }
 
 void GameBoard::UpdateGrid(){
-  amountofCorn =0;
-  for(int i =0; i < 10; i++) {
-		for(int j =0; j < 10;j++) {
+  amountofCorn = 0;
+  for(int i = 0; i < 10; i++) {
+		for(int j = 0; j < 10;j++) {
       if(soilGrid[i][j] != NULL)
         amountofCorn++;
     }
   }
-  if(amountofCorn == 0)
-    day = 1001;
   x = rand() % tornado_num;
   if (x <= tornado_spawn_num){
     spawnTornado();
@@ -88,8 +86,8 @@ bool GameBoard::checkBounds(int x, int y){
 
 int GameBoard::harvested() {
   numHarvested = 0;
-  for(int i =0; i < 10; i++) {
-		for(int j =0; j < 10;j++) {
+  for(int i = 0; i < 10; i++) {
+		for(int j = 0; j < 10;j++) {
       numHarvested = numHarvested + soilGrid[i][j]->getHarvested();
     }
   }
@@ -109,11 +107,6 @@ void GameBoard::spawnTornado(){
     }
   }
   cout << "the number of corns is " << corn_num << endl;
-  if(corn_num == 1){
-    grid[x][y] = ' ';
-    soilGrid[x][y]->destroyCorn();
-    return;
-  }
   //finding the crops which are going to be destroyed
   if(corn_num < 10){
     crops_destroyed = rand() % corn_num;
@@ -127,6 +120,7 @@ void GameBoard::spawnTornado(){
       x = rand() % 10;
       y = rand() % 10;
       if (soilGrid[x][y]->planted() != NULL){
+        cout << x << ", " << y << endl;
         soilGrid[x][y]->destroyCorn();
         grid[x][y] = ' ';
         break;
@@ -144,6 +138,7 @@ void GameBoard::matureCorn(int x, int y){
       //check the age of the adjacent corn
       if(tempCorn->getAge() >= tempCorn->getFertilityAge()){
         if(checkBounds(x, y+2) && !soilGrid[x][y+2]->hasCorn()){
+          cout << "adding a new corn at " << x << ", " << y+2 << endl;
           soilGrid[x][y+2]->addCorn();
           grid[x][y+2]= 'C' ;
         }
@@ -157,6 +152,7 @@ void GameBoard::matureCorn(int x, int y){
       //check the age of the adjacent corn
       if(tempCorn->getAge() >= tempCorn->getFertilityAge()){
         if(checkBounds(x, y-2) && !soilGrid[x][y-2]->hasCorn()){
+          cout << "adding a new corn at " << x << ", " << y-2 << endl;
           soilGrid[x][y-2]->addCorn();
           grid[x][y-2]= 'C' ;
         }
@@ -170,6 +166,7 @@ void GameBoard::matureCorn(int x, int y){
       //check the age of the adjacent corn
       if(tempCorn->getAge() >= tempCorn->getFertilityAge()){
         if(checkBounds(x+2, y) && !soilGrid[x+2][y]->hasCorn()){
+          cout << "adding a new corn at " << x+2 << ", " << y << endl;
           soilGrid[x+2][y]->addCorn();
           grid[x+2][y]= 'C' ;
         }
@@ -183,10 +180,23 @@ void GameBoard::matureCorn(int x, int y){
       //check the age of the adjacent corn
       if(tempCorn->getAge() >= tempCorn->getFertilityAge()){
         if(checkBounds(x-2, y) && !soilGrid[x-2][y]->hasCorn()){
+          cout << "adding a new corn at " << x+2 << ", " << y << endl;
           soilGrid[x-2][y]->addCorn();
           grid[x-2][y]= 'C' ;
         }
       }
     }
   }
+}
+
+int GameBoard::getCornNum(){
+  amountofCorn = 0;
+  for(int i=0;i<10;i++){
+    for(int j=0;j<10;j++){
+      if(soilGrid[i][j]->hasCorn()){
+        ++amountofCorn;
+      }
+    }
+  }
+  return amountofCorn;
 }
