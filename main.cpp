@@ -25,7 +25,7 @@ for (int i = 0; i < 1000; i++){
 			}
 			day++;
   }
-  if(harvest > 50) {
+  if(harvest >= 50) {
     cout << "Congratulations you have harvested enough corn for the season!" << endl;
 		won++;
   }
