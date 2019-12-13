@@ -29,7 +29,7 @@ void Soil::update() {
 		//if the fertility is gone destroy the corn
 		destroyCorn();
 		fertility = fertility + FERTILITY_INCREASE;
-		cout << "killed a corn " << corn->getAge() << endl;
+		cout << "killed a corn " << endl;
 	}
 	else {
 		if(corn->getAge() < corn->getMaxAge()) {
