@@ -9,7 +9,9 @@ Soil::Soil() {
 }
 
 void Soil::addCorn(){
+	
 	corn = new Corn();
+	
 }
 
 void Soil::Harvest() {
@@ -62,7 +64,9 @@ Soil& Soil::operator=(const Soil rhs) {
 }
 
 void Soil::destroyCorn(){
+	delete corn;
 	corn = NULL;
+	
 }
 
 bool Soil::hasCorn(){
@@ -70,4 +74,7 @@ bool Soil::hasCorn(){
 		return false;
 	}
 	return true;
+}
+Soil::~Soil() {
+	//delete corn2;
 }

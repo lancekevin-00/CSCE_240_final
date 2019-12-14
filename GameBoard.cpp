@@ -5,8 +5,10 @@
 
 GameBoard::GameBoard() : World(){
   srand (time(NULL));
+
 	this->initGrid();
 	day = 0;
+  
   numHarvested = 0;
 }
 
@@ -62,19 +64,20 @@ void GameBoard::initGrid(){
     for(int j = 0; j < 10; j++){
       //putting the corn objects in the correct configuration
       if((i >= cornX && i < cornX+5) && (j == cornY || j == cornY+1)){
-        Soil *soil = new Soil();
+        soil = new Soil();
         soil->addCorn();
         soilGrid[i][j] = soil;
         grid[i][j] = 'C';
       }
       //the regular soil
       else {
-        Soil *soil = new Soil();
+        soil = new Soil();
         soilGrid[i][j] = soil;
         grid[i][j] = ' ';
       }
     }
   }
+ // delete soil;
 }
 
 bool GameBoard::checkBounds(int x, int y){
@@ -114,7 +117,6 @@ void GameBoard::spawnTornado(){
   else{
     crops_destroyed = (rand() % (int)(corn_num/10)) + 1;
   }
-  corn_locations = new int[crops_destroyed];
   for(int i = 0; i <= crops_destroyed; i++){
     while(true){
       x = rand() % 10;
@@ -194,4 +196,17 @@ int GameBoard::getCornNum(){
     }
   }
   return amountofCorn;
+}
+
+GameBoard::~GameBoard() {
+    for(int i=0;i<10;i++){
+      for(int j=0;j<10;j++) {
+        delete soilGrid[i][j];
+      }
+     // delete [] soilGrid[i];
+    } 
+  //delete tempCorn;
+  //delete currCorn;
+ 
+  //delete soil; 
 }

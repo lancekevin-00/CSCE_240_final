@@ -7,6 +7,7 @@
 class GameBoard : public World {
 public:
 	GameBoard();
+  ~GameBoard();
 	void PrintGrid();
 	void UpdateGrid();
   int harvested();
@@ -23,7 +24,6 @@ private:
 	void matureCorn(int, int);
 
 	int crops_destroyed;
-	int *corn_locations;
 	const int tornado_spawn_num = 1;
 	const int tornado_num = 100;
 
@@ -33,6 +33,7 @@ private:
 	int corn_num;
   int amountofCorn;
 
+  Soil *soil;
 	Corn *currCorn;
 	Corn *tempCorn;
 };
