@@ -29,15 +29,12 @@ int main (int argc, char **argv) {
   }
   if(harvest >= 50) {
     cout << "Congratulations you have harvested enough corn for the season!" << endl;
-		won++;
   }
   else if(day == 1001){
     cout << "Uh oh you all of your corn has died! Better luck next season." << endl;
-		lost++;
  }
    else {
     cout << "Uh oh the seasons over and you didn't harvest enough corn in time! Game Over." << endl;
-		lost++;
   }
 	delete sim;
 	return 0;
