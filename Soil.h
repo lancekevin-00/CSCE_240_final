@@ -1,3 +1,9 @@
+/**********************
+ * Written by: Lance Kevin and Riley Conant
+ * Time of Completion: 11:08pm 12/13/2019
+ * Description: Soil header class that has the prototypes of all the functions 
+ *  and member variables that the soil object will define.
+ * ************************/
 #ifndef SOIL_H
 #define SOIL_H
 #include "Corn.h"
@@ -7,9 +13,10 @@ using namespace std;
 
 class Soil{
 public:
+//Constructor and Desctructor
   Soil();
-  Soil(Corn*);
   ~Soil();
+  //Functions
   void addCorn();
   void Harvest();
   void update();
@@ -20,6 +27,7 @@ public:
   bool hasCorn();
   int getFertility() const;
 private:
+//Member variables
   Corn *corn;
 	int fertility;
 	int harvested;
