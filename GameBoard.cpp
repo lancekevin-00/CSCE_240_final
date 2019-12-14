@@ -114,7 +114,6 @@ void GameBoard::spawnTornado(){
   else{
     crops_destroyed = (rand() % (int)(corn_num/10)) + 1;
   }
-  corn_locations = new int[crops_destroyed];
   for(int i = 0; i <= crops_destroyed; i++){
     while(true){
       x = rand() % 10;
@@ -194,4 +193,12 @@ int GameBoard::getCornNum(){
     }
   }
   return amountofCorn;
+}
+
+GameBoard::~GameBoard(){
+  for(int i = 0; i < 10; i++){
+    for(int j = 0; j < 10; j++){
+      delete soilGrid[i][j];
+    }
+  }
 }
