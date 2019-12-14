@@ -1,9 +1,11 @@
+/*
+Written by Riley Conant and Lance Kevin
+completed on 12/13/19
+the driver for the corn field simulation
+*/
 #include <iostream>
 #include "GameBoard.h"
 int main (int argc, char **argv) {
-	int won = 0;
-	int lost = 0;
-//for (int i = 0; i < 1000; i++){
 	int harvest = 0;
 	int remainingCorn = 0;
   int day = 0;
@@ -14,10 +16,10 @@ int main (int argc, char **argv) {
       sim->PrintGrid();
       harvest = sim->harvested();
       cout << "This is day "<< day << "! Enter a y to continue"<< endl;
-			//cout << harvest << " corn has been harvested" << endl;
-      //cin >> response;
-      //if(response != 'y')
-       //break;
+			cout << harvest << " corn has been harvested" << endl;
+      cin >> response;
+      if(response != 'y')
+       break;
       sim->UpdateGrid();
 			remainingCorn = sim->getCornNum();
 			if(remainingCorn == 0){
@@ -38,9 +40,5 @@ int main (int argc, char **argv) {
 		lost++;
   }
 	delete sim;
-
-cout << "won: " << won << endl;
-cout << "lost: " << lost << endl;
-
 	return 0;
 }

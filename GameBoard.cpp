@@ -1,4 +1,8 @@
-
+/**
+Written By Riley Conant and Lance Kevin
+completed on 12/13/19
+is the main class wich deals with the farmers soil and crops
+*/
 #include "GameBoard.h"
 #include "Soil.h"
 #include <iostream>
@@ -8,10 +12,11 @@ GameBoard::GameBoard() : World(){
 
 	this->initGrid();
 	day = 0;
-  
+
   numHarvested = 0;
 }
 
+//prints the grid
 void GameBoard::PrintGrid()  {
 	for(int i =0; i < 10; i++) {
 		cout << "| ";
@@ -22,6 +27,7 @@ void GameBoard::PrintGrid()  {
 	}
 }
 
+//called each day, makes the nessecary moves for each soil
 void GameBoard::UpdateGrid(){
   amountofCorn = 0;
   for(int i = 0; i < 10; i++) {
@@ -30,12 +36,14 @@ void GameBoard::UpdateGrid(){
         amountofCorn++;
     }
   }
+  //determines whether a tornado will spawn or not
   x = rand() % tornado_num;
   if (x <= tornado_spawn_num){
     spawnTornado();
     cout << "the tornado has ended" << endl;
   }
 
+  //updates each soil object in the soil grid
   for(int i = 0; i < 10; i++) {
 		for(int j = 0; j < 10;j++) {
       soilGrid[i][j]->update();
@@ -57,7 +65,9 @@ void GameBoard::UpdateGrid(){
   }
 }
 
+//initializes the grid
 void GameBoard::initGrid(){
+  //randomly determines the top coordinates of the crops
   cornY = rand() % 8;
   cornX = rand() % 5;
   for(int i = 0; i < 10; i++){
@@ -77,7 +87,6 @@ void GameBoard::initGrid(){
       }
     }
   }
- // delete soil;
 }
 
 bool GameBoard::checkBounds(int x, int y){
@@ -88,6 +97,7 @@ bool GameBoard::checkBounds(int x, int y){
   return true;
 }
 
+//determines the amount of corn which has been harvested this growing season
 int GameBoard::harvested() {
   numHarvested = 0;
   for(int i = 0; i < 10; i++) {
@@ -98,6 +108,7 @@ int GameBoard::harvested() {
   return numHarvested;
 }
 
+//spawning a tornado
 void GameBoard::spawnTornado(){
   cout << "TORNADO SIRENS" << endl;
   corn_num = 0;
@@ -117,6 +128,7 @@ void GameBoard::spawnTornado(){
   else{
     crops_destroyed = (rand() % (int)(corn_num/10)) + 1;
   }
+  //randomly finding the crops to destroy
   for(int i = 0; i <= crops_destroyed; i++){
     while(true){
       x = rand() % 10;
@@ -130,6 +142,7 @@ void GameBoard::spawnTornado(){
   }
 }
 
+//spawning a new corn
 void GameBoard::matureCorn(int x, int y){
   //checking the space to the right
   if(checkBounds(x, y+1)){
@@ -186,6 +199,7 @@ void GameBoard::matureCorn(int x, int y){
   }
 }
 
+//counting the amount of corn on the grid
 int GameBoard::getCornNum(){
   amountofCorn = 0;
   for(int i=0;i<10;i++){
@@ -198,6 +212,7 @@ int GameBoard::getCornNum(){
   return amountofCorn;
 }
 
+//destroying all the soil objects in the grid
 GameBoard::~GameBoard(){
   for(int i = 0; i < 10; i++){
     for(int j = 0; j < 10; j++){
