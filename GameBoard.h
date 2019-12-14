@@ -24,7 +24,6 @@ private:
 	void matureCorn(int, int);
 
 	int crops_destroyed;
-	int *corn_locations;
 	const int tornado_spawn_num = 1;
 	const int tornado_num = 100;
 
