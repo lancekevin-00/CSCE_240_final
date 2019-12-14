@@ -37,9 +37,10 @@ int main (int argc, char **argv) {
     cout << "Uh oh the seasons over and you didn't harvest enough corn in time! Game Over." << endl;
 		lost++;
   }
-//} 
-delete sim;
-  //cout << "won: " << won << endl;
-  //cout << "lost: " << lost << endl;
+	delete sim;
+
+cout << "won: " << won << endl;
+cout << "lost: " << lost << endl;
+
 	return 0;
 }

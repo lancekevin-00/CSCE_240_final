@@ -198,15 +198,11 @@ int GameBoard::getCornNum(){
   return amountofCorn;
 }
 
-GameBoard::~GameBoard() {
-    for(int i=0;i<10;i++){
-      for(int j=0;j<10;j++) {
-        delete soilGrid[i][j];
-      }
-     // delete [] soilGrid[i];
-    } 
-  //delete tempCorn;
-  //delete currCorn;
- 
-  //delete soil; 
+GameBoard::~GameBoard(){
+  for(int i = 0; i < 10; i++){
+    for(int j = 0; j < 10; j++){
+      delete soilGrid[i][j];
+    }
+  }
+
 }

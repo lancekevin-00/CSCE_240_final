@@ -75,6 +75,7 @@ bool Soil::hasCorn(){
 	}
 	return true;
 }
-Soil::~Soil() {
-	//delete corn2;
+
+Soil::~Soil(){
+	delete corn;
 }
