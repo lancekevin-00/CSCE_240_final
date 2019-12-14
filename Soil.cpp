@@ -71,3 +71,7 @@ bool Soil::hasCorn(){
 	}
 	return true;
 }
+
+Soil::~Soil(){
+	delete corn;
+}

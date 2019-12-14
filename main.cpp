@@ -37,6 +37,7 @@ for (int i = 0; i < 1000; i++){
     cout << "Uh oh the seasons over and you didn't harvest enough corn in time! Game Over." << endl;
 		lost++;
   }
+	delete sim;
 }
 cout << "won: " << won << endl;
 cout << "lost: " << lost << endl;
